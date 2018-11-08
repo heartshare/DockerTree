@@ -101,4 +101,58 @@ Docker安装
 </pre>
 
 <pre>
+创建镜像
+   创建镜像的方法有三种
+       1）基于已有镜像的容器创建
+          命令  docker commit
+          第一步：启动镜像
+          $ sudo docker run -ti ubuntu:14.04 /bin/bash
+          $ exit
+
+          第二步
+          $ sudo docker commit -m 
+          commit成功后会返回新创建的镜像的ID
+
+          第三步 查看本地镜像列表，即可看到新创建的镜像
+          $ sudo docker images
+
+       2）基于本地模板导入
+          也可以直接从一个操作系统模板文件导入一个镜像。
+          $ sudo cat | import 
+           
+       3）基于Dockerfile创建
+          
+存出和载入镜像
+    可以使用docker save 和 docker load命令来存出和载入镜像
+    1）如果要存出镜像到本地文件
+    $ sudo docker save -o 
+   
+    2) 载入镜像
+    可以使用docker load从存出的本地文件中再导入到本地镜像库
+    $ sudo docker load < 
+    这将导入镜像以及相关的元数据信息
+
+上传镜像
+    可以使用docker push命令上传镜像到仓库，默认上传到DockerHub官方仓库
+    $ sudo docker push  
+</pre>
+
+<pre>
+容器
+   容器是镜像的一个运行实例，所不同的是，它带有额外的可写文件层。
+
+   docker create命令创建一个容器
+   $ sudo docker create -it 
+   $ sudo docker ps -a
+   使用docker create创建的容器处于停止状态，可以使用docker start命令来启动它
+
+   新建并启动容器
+       启动容器有两种方式
+           1）基于镜像新建一个容器并启动
+           2）将在终止状态的容器重新启动
+       使用的的命令
+           docker run 等价于 docker create命令，再执行docker start命令
+
+       当利用docker run来创建并启动容器时，Docker在后台运行的标准操作包括
+           1）检查本地是否存在指定的镜像。
 </pre>

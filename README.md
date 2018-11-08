@@ -74,5 +74,31 @@ Docker安装
 </pre>
 
 <pre>
+镜像
+    镜像时Docker运行容器的前提。
+    例如下载一个最新的Ubuntu操作系统
+    $ sudo docker pull ubuntu：[tag]  tag为版本号。
+    等价于
+    $ sudo docker pull registry.hub.docker.com/ubuntu:latest
+    下载镜像到本地后，即可随时使用该镜像了，例如利用该镜像创建一个容器，在其中运行bash应用。
+    $ sudo docker run -t -i ubuntu bin/bash
 
+    查看镜像信息
+    1) 列出本地主机上已有的镜像
+    $ sudo docker images
+
+    2）获取镜像的详细信息
+    $ sudo docker inspect IMAGE_ID(镜像ID)
+
+    3）搜寻镜像
+    $ sudo docker search mysql
+
+    5) 删除镜像 (当一个镜像有多个标签的时候，docker rmi只是删除了该镜像多个标签中的指定标签而已。不影响镜像文件，但当镜像只剩下一个标签的时候就要小心了，此时再使用docker rmi命令会彻底删除该镜像)
+    $ sudo docker rmi 
+    
+    6）查看本机上所有的容器
+    $ sudo docker ps -a
+</pre>
+
+<pre>
 </pre>

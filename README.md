@@ -289,4 +289,32 @@ Docker Hub
 
 <pre>
 使用Dockerfile创建镜像
+   Dockerfile是一个文本格式的配置文件，用户可以使用Dockerfile快速创建自定义的镜像。
+
+   Dockerfile的基本结构
+        Dockerfile由一行命令语句组成，并且支持以#开头的注释行
+        一半而言，Dockerfile文件分为四部分
+            1）基础镜像信息
+            2）维护者信息
+            3）镜像操作指令
+            5）容器启动时执行指令 
+
+        例如
+            
+            # 基础镜像
+            FROM ubuntu
+            # 维护者信息
+            MAINTAINER docker_user docker_user@email.com
+            # 镜像的操作指令
+            RUN echo "" > /etc/apt/sources.list
+            RUN apt-get update && apt-get install -y nginx
+            RUN echo ""
+
+            # 容器启动时执行指令
+            CMD /user/sbin/nginx
+
+创建镜像
+    编写完dockerfile之后，可以通过docker build[选项]命令来创建镜像,该命令将读取指定路径下的dockerfile，并将该路径下所有内容发送给Docker服务器，由服务器来创建镜像。
+         $ sudo docker build -t mirrorPath dockerfilepath
+     
 </pre>
